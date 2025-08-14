@@ -1,0 +1,622 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header */
+h1 {
+  color: #1a202c;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+/* Tax Band Selector */
+.tax-band-selector {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3182ce;
+}
+
+.tax-band-selector h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.tax-band-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.tax-band-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s;
+  background: #f7fafc;
+}
+
+.tax-band-options label:hover {
+  border-color: #3182ce;
+  background: #ebf8ff;
+}
+
+.tax-band-options input[type="radio"]:checked + span {
+  font-weight: 600;
+}
+
+.tax-band-options input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #3182ce;
+}
+
+/* Form Sections */
+.add-account-form,
+.add-isa-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-account-form {
+  border-left: 4px solid #38a169;
+}
+
+.add-isa-form {
+  border-left: 4px solid #d69e2e;
+}
+
+.add-account-form h2,
+.add-isa-form h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.form-row input,
+.form-row select {
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.form-row button {
+  padding: 0.75rem 1.5rem;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.form-row button:hover {
+  background: #2c5282;
+}
+
+/* Tables */
+.accounts-list,
+.isa-list {
+  margin-bottom: 2rem;
+}
+
+.accounts-list h2,
+.isa-list h2 {
+  color: #1a202c;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background: #4a5568;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: #f7fafc;
+}
+
+td button {
+  padding: 0.5rem 1rem;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+td button:hover {
+  background: #c53030;
+}
+
+/* Tax Summary */
+.tax-summary {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #38a169;
+}
+
+.tax-summary h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.summary-item.total {
+  background: #38a169;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  grid-column: 1 / -1;
+}
+
+.summary-item label {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.summary-item.total label {
+  color: white;
+}
+
+.summary-item span {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a202c;
+}
+
+.summary-item.total span {
+  color: white;
+}
+
+/* Empty States */
+.accounts-list p,
+.isa-list p {
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #e2e8f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tax-band-options {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .add-account-form,
+  .add-isa-form,
+  .tax-band-selector,
+  .tax-summary {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th,
+  td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+/* Save Scenario Section */
+.save-scenario {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #805ad5;
+}
+
+.save-scenario h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.save-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.save-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.save-form button {
+  padding: 0.75rem 1.5rem;
+  background: #805ad5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.save-form button:hover:not(:disabled) {
+  background: #6b46c1;
+}
+
+.save-form button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Saved Scenarios Section */
+.saved-scenarios {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #805ad5;
+}
+
+.scenarios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.scenarios-header h2 {
+  margin: 0;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.compare-toggle {
+  padding: 0.75rem 1.5rem;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.compare-toggle:hover {
+  background: #2c5282;
+}
+
+/* Scenario Cards */
+.scenarios-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.scenario-card {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.scenario-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.scenario-header h3 {
+  margin: 0;
+  color: #1a202c;
+  font-size: 1.2rem;
+}
+
+.scenario-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scenario-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.scenario-actions button:first-child {
+  background: #38a169;
+  color: white;
+}
+
+.scenario-actions button:first-child:hover {
+  background: #2f855a;
+}
+
+.scenario-actions button.delete {
+  background: #e53e3e;
+  color: white;
+}
+
+.scenario-actions button.delete:hover {
+  background: #c53030;
+}
+
+.scenario-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.scenario-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.scenario-stat label {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.scenario-stat span {
+  font-weight: 600;
+  color: #1a202c;
+}
+
+/* Comparison View */
+.comparison-view {
+  margin-top: 2rem;
+}
+
+.comparison-selector {
+  margin-bottom: 2rem;
+}
+
+.comparison-selector h3 {
+  margin-bottom: 1rem;
+  color: #1a202c;
+}
+
+.scenario-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.scenario-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.scenario-checkbox:hover {
+  background: #edf2f7;
+}
+
+.scenario-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3182ce;
+}
+
+.scenario-checkbox input[type="checkbox"]:disabled {
+  opacity: 0.5;
+}
+
+/* Comparison Table */
+.comparison-table {
+  overflow-x: auto;
+}
+
+.comparison-table table {
+  min-width: 600px;
+}
+
+.comparison-table th:first-child {
+  background: #2d3748;
+  min-width: 150px;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.comparison-table td:first-child {
+  background: #f7fafc;
+  font-weight: 600;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  border-right: 2px solid #e2e8f0;
+}
+
+.comparison-table .total-row td {
+  background: #38a169;
+  color: white;
+  font-weight: 600;
+}
+
+.comparison-table .total-row td:first-child {
+  background: #2f855a;
+}
+
+/* Additional responsive updates */
+@media (max-width: 768px) {
+  .save-form {
+    flex-direction: column;
+  }
+
+  .scenarios-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .scenarios-list {
+    grid-template-columns: 1fr;
+  }
+
+  .scenario-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .scenario-checkboxes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .save-scenario,
+  .saved-scenarios {
+    padding: 1rem;
+  }
+
+  .scenario-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+}
