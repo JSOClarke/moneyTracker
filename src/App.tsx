@@ -55,6 +55,7 @@ function App() {
   const [scenarioName, setScenarioName] = useState("");
   const [showComparison, setShowComparison] = useState(false);
   const [selectedScenarios, setSelectedScenarios] = useState<string[]>([]);
+  const [totalNetWorth, setTotalNetWorth] = useState("");
 
   // UK Personal Savings Allowance (2024/25)
   const getSavingsAllowance = (band: TaxBand): number => {
@@ -205,6 +206,42 @@ function App() {
     }
   };
 
+  // Calculate totals for net worth bar
+  const getTotalAllocated = (): number => {
+    const savingsTotal = accounts.reduce(
+      (total, account) => total + account.amount,
+      0
+    );
+    const isaTotal = isaAccounts.reduce((total, isa) => total + isa.amount, 0);
+    return savingsTotal + isaTotal;
+  };
+
+  const getNetWorthValue = (): number => {
+    return totalNetWorth ? parseFloat(totalNetWorth.replace(/,/g, "")) : 0;
+  };
+
+  const getRemainingAmount = (): number => {
+    return Math.max(0, getNetWorthValue() - getTotalAllocated());
+  };
+
+  const getAllocationPercentages = () => {
+    const netWorth = getNetWorthValue();
+    if (netWorth === 0) return { savings: 0, isa: 0, remaining: 100 };
+
+    const savingsTotal = accounts.reduce(
+      (total, account) => total + account.amount,
+      0
+    );
+    const isaTotal = isaAccounts.reduce((total, isa) => total + isa.amount, 0);
+    const remaining = getRemainingAmount();
+
+    return {
+      savings: (savingsTotal / netWorth) * 100,
+      isa: (isaTotal / netWorth) * 100,
+      remaining: (remaining / netWorth) * 100,
+    };
+  };
+
   const taxCalc = calculateTax();
 
   return (
@@ -214,6 +251,100 @@ function App() {
         Calculate your savings interest and tax liability with the Personal
         Savings Allowance
       </p>
+
+      <div className="net-worth-section">
+        <h2>Net Worth Allocation</h2>
+        <div className="net-worth-input">
+          <CurrencyInput
+            placeholder="Enter your total net worth (£)"
+            value={totalNetWorth}
+            onChange={(value) => setTotalNetWorth(value)}
+          />
+        </div>
+
+        {getNetWorthValue() > 0 && (
+          <div className="allocation-bar">
+            <div className="allocation-stats">
+              <div className="stat">
+                <span className="label">Total Net Worth:</span>
+                <span className="value">
+                  £{getNetWorthValue().toLocaleString()}
+                </span>
+              </div>
+              <div className="stat">
+                <span className="label">Allocated:</span>
+                <span className="value">
+                  £{getTotalAllocated().toLocaleString()}
+                </span>
+              </div>
+              <div className="stat">
+                <span className="label">Remaining:</span>
+                <span className="value">
+                  £{getRemainingAmount().toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            <div className="progress-bar">
+              {(() => {
+                const percentages = getAllocationPercentages();
+                return (
+                  <>
+                    {percentages.savings > 0 && (
+                      <div
+                        className="progress-segment savings"
+                        style={{ width: `${percentages.savings}%` }}
+                        title={`Savings Accounts: ${percentages.savings.toFixed(
+                          1
+                        )}%`}
+                      />
+                    )}
+                    {percentages.isa > 0 && (
+                      <div
+                        className="progress-segment isa"
+                        style={{ width: `${percentages.isa}%` }}
+                        title={`ISA Accounts: ${percentages.isa.toFixed(1)}%`}
+                      />
+                    )}
+                    {percentages.remaining > 0 && (
+                      <div
+                        className="progress-segment remaining"
+                        style={{ width: `${percentages.remaining}%` }}
+                        title={`Unallocated: ${percentages.remaining.toFixed(
+                          1
+                        )}%`}
+                      />
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+
+            <div className="allocation-legend">
+              <div className="legend-item">
+                <div className="legend-color savings"></div>
+                <span>
+                  Savings Accounts (
+                  {getAllocationPercentages().savings.toFixed(1)}%)
+                </span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-color isa"></div>
+                <span>
+                  ISA Accounts ({getAllocationPercentages().isa.toFixed(1)}%)
+                </span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-color remaining"></div>
+                <span>
+                  Unallocated ({getAllocationPercentages().remaining.toFixed(1)}
+                  %)
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
       <div className="tax-band-selector">
         <h2>Tax Band</h2>

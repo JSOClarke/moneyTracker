@@ -620,3 +620,155 @@ td button:hover {
     align-items: stretch;
   }
 }
+/* Net Worth Allocation Section */
+.net-worth-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #e53e3e;
+}
+
+.net-worth-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.net-worth-input {
+  margin-bottom: 2rem;
+}
+
+.net-worth-input input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.allocation-bar {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.allocation-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.allocation-stats .stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.allocation-stats .label {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.allocation-stats .value {
+  font-weight: 700;
+  color: #1a202c;
+  font-size: 1.1rem;
+}
+
+.progress-bar {
+  height: 40px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-segment.savings {
+  background: linear-gradient(135deg, #38a169, #48bb78);
+}
+
+.progress-segment.isa {
+  background: linear-gradient(135deg, #d69e2e, #ecc94b);
+}
+
+.progress-segment.remaining {
+  background: linear-gradient(135deg, #718096, #a0aec0);
+}
+
+.allocation-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-color.savings {
+  background: linear-gradient(135deg, #38a169, #48bb78);
+}
+
+.legend-color.isa {
+  background: linear-gradient(135deg, #d69e2e, #ecc94b);
+}
+
+.legend-color.remaining {
+  background: linear-gradient(135deg, #718096, #a0aec0);
+}
+
+/* Responsive updates for net worth section */
+@media (max-width: 768px) {
+  .allocation-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .allocation-legend {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .net-worth-section {
+    padding: 1rem;
+  }
+
+  .allocation-bar {
+    padding: 1rem;
+  }
+
+  .progress-bar {
+    height: 30px;
+  }
+}
