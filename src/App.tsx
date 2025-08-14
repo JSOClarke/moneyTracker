@@ -640,8 +640,10 @@ function App() {
                           );
                           return (
                             <td key={scenarioId}>
-                              {scenario?.taxBand.charAt(0).toUpperCase() +
-                                scenario?.taxBand.slice(1)}{" "}
+                              {scenario
+                                ? scenario.taxBand.charAt(0).toUpperCase() +
+                                  scenario.taxBand.slice(1)
+                                : "Unknown"}{" "}
                               Rate
                             </td>
                           );
